@@ -1,0 +1,26 @@
+version: '2'
+services:
+
+  zf:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www
+    ports:
+      - "8080:80"
+
+  database:
+    image: mysql:5.6
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=api"
+      - "MYSQL_USER=developer"
+      - "MYSQL_PASSWORD=developer"
+      - "MYSQL_ROOT_PASSWORD=developer"
+    ports:
+      - "33061:3306"
+
+volumes:
+  dbdata:
