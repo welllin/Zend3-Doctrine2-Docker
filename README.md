@@ -1,6 +1,6 @@
 ## Introduction
 
-This is the api backend using Zend3, Doctrine2.
+A starter kit for zend-framework 3 with doctrine2
 
 ## First Pull
 
