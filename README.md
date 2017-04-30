@@ -1,5 +1,3 @@
-# RESTFul API Server
-
 ## Introduction
 
 This is the api backend using Zend3, Doctrine2.
