@@ -6,6 +6,7 @@ A starter kit for zend-framework 3 with doctrine2
 
 You need to create a file named `local.php` under `/config/autoload` directory, with the following content.
 
+### Create a `local.php` file to tell Doctrine2 to connect to docker database container.
 ```php
 <?php
 use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
@@ -27,6 +28,16 @@ return [
     ],
 ];
 ```
+
+### Create database schema
+
+After you fired up the containers and working, you might see the following errors in home page.
+
+`SQLSTATE[42S02]: Base table or view not found: 1146 Table 'api.post' doesn't exist`
+
+It means that we have a database schema runing but our database doesn't have these tables yet. We need to run the following command to update our database.
+
+`docker-compose exec zf vendor/bin/doctrine-module orm:schema-tool:update --dump-sql`
 
 ## Development mode
 
@@ -89,3 +100,5 @@ You can also run composer from the image. The container environment is named
 ```bash
 $ docker-compose run zf composer install
 ```
+
+You might be prompted to ask which modules to install when executing the command, most likely you need to choose the second option - `config/modules.config.php`.
